@@ -1,33 +1,58 @@
 package fr.eni.ludotheque.bo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
+import jakarta.annotation.Nullable;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
-@AllArgsConstructor
-
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "Jeux")
 public class Jeu {
+
+    @EqualsAndHashCode.Exclude
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @NonNull
+    @Column(unique = true, nullable = false)
     private String titre;
+
     @NonNull
+    @Column(unique = true, nullable = false)
     private String reference;
-    @NonNull
-    private int age_min;
-    @NonNull
+
+    @Nullable
+    @Column( nullable = true)
+    private Integer age_min;
+
+    @Nullable
+    @Column( nullable = true)
     private String Description;
-    @NonNull
-    private int duree;
-    @NonNull
-    private double tarif_jour;
+
+    @Nullable
+    @Column( nullable = true)
+    private Integer duree;
 
     @NonNull
-    private ArrayList<Exemplaire> exemplaires;
+    @Column( nullable = false)
+    private Double tarif_jour;
 
+    @ManyToMany
+    @Nullable
+    @JoinTable(name = "jeux_genre",
+    joinColumns = @JoinColumn(name = "jeux_id"),
+    inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private Set<Genre> genres = new HashSet<>(); ;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "jeu",orphanRemoval = true)
     @NonNull
-    private ArrayList<Genre> genres;
-
+    private Set<Exemplaire> exemplaires = new HashSet<>();
 }

@@ -1,22 +1,31 @@
 package fr.eni.ludotheque.bo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Data
-@AllArgsConstructor
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "Adresse")
 public class Adresse {
     @EqualsAndHashCode.Exclude
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer no_adresse;
 
     @NonNull
+    @Column(length = 100,nullable = false)
     private String rue;
 
     @NonNull
+    @Column(length = 15,nullable = false)
     private String code_postal;
 
     @NonNull
+    @Column(length = 100,nullable = false)
     private String ville;
+
+    @OneToOne(mappedBy = "adresse")
+    private Client client;
 }

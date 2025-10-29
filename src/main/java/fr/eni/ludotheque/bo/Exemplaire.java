@@ -1,19 +1,33 @@
 package fr.eni.ludotheque.bo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "Exemplaire")
 public class Exemplaire {
+
+    @EqualsAndHashCode.Exclude
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @NonNull
+    @Column(length = 100,nullable = false,unique = true)
     private String codebarre;
+
     @NonNull
+    @Basic(optional = false)
     private Boolean louable;
+
+    @ManyToOne
     @NonNull
-    private LocalDate debut;
+    @JoinColumn(name = "jeux_id_jeux")
+    private Jeu jeu;
+
 }
