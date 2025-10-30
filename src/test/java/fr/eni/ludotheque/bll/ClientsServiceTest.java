@@ -1,5 +1,6 @@
 package fr.eni.ludotheque.bll;
 
+import fr.eni.ludotheque.bo.Adresse;
 import fr.eni.ludotheque.bo.Client;
 import fr.eni.ludotheque.dal.ClientsRepository;
 import fr.eni.ludotheque.dto.ClientDto;
@@ -28,6 +29,7 @@ public class ClientsServiceTest {
         //Arrange
         ClientDto clientDto = new ClientDto("nom1","p1","p1.nom1@eni.fr","01101225468","rue1","44400","Rezé");
         Client fauxClient = new Client();
+        fauxClient.setAdresse(new Adresse());
         BeanUtils.copyProperties(clientDto,fauxClient);
         BeanUtils.copyProperties(clientDto,fauxClient.getAdresse());
         fauxClient.setNoClient(123);
