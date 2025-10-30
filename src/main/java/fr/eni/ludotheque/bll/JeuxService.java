@@ -5,9 +5,7 @@ import fr.eni.ludotheque.bo.Jeu;
 import java.util.List;
 
 public interface JeuxService {
-    void ajouterJeu(Jeu jeu);
-    Jeu trouverJeuParNoJeu(Integer noJeu);
-    List<Jeu> listeJeuxCatalogue(String filtreTitre);
+
 
 
 }
