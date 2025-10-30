@@ -52,5 +52,8 @@ public class Jeu {
     )
     private Set<Genre> genres = new HashSet<>(); ;
 
+    @OneToMany(mappedBy = "jeu")
+    private Set<Exemplaire> exemplaires = new HashSet<>();
+
 
 }

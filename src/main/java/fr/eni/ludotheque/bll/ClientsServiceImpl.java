@@ -41,30 +41,41 @@ public class ClientsServiceImpl implements ClientsService {
     }
 
     @Override
-    public Client ModificationClient(ClientDto i) {
-        Client clientToChange =  clientsRepository.getClientByNoClient(1);
+    public Client getClientById(Integer id) {
+        return clientsRepository.findById(id).get();
+    }
+
+    @Override
+    public Client modificationClient(ClientDto i,Integer id) {
+        Client clientToChange =  clientsRepository.getClientByNoClient(id);
         if(clientToChange == null){
             return null;
         }
         BeanUtils.copyProperties(i, clientToChange );
         Adresse adresse = new Adresse();
         BeanUtils.copyProperties(i, adresse );
-        clientToChange.setAdresse(adresse);
-        clientsRepository.save(clientToChange);
+        modificationAdresse(adresse,id);
+
         return clientToChange;
     }
 
     @Override
-    public Client ModificationAdresse(Adresse adresse) {
-        Client clientToChange =  clientsRepository.getClientByNoClient(1);
+    public Client modificationAdresse(Adresse adresse,Integer id) {
+        Client clientToChange =  clientsRepository.getClientByNoClient(id);
         if(clientToChange == null){
             return null;
         }
         clientToChange.getAdresse().setRue(adresse.getRue());
         clientToChange.getAdresse().setVille(adresse.getVille());
-        clientToChange.getAdresse().setCode_postal(adresse.getCode_postal());
+        clientToChange.getAdresse().setCodePostal(adresse.getCodePostal());
         clientsRepository.save(clientToChange);
         return clientToChange;
+    }
+
+    @Override
+    public void supprimerClient(Integer id) {
+        clientsRepository.deleteById(id);
+        clientsRepository.flush();
     }
 
 

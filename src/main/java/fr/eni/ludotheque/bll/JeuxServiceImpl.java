@@ -12,7 +12,8 @@ import java.util.Optional;
 public class JeuxServiceImpl implements JeuxService {
 
 
-
-
-
+    @Override
+    public List<Jeu> getJeux() {
+        return List.of();
+    }
 }

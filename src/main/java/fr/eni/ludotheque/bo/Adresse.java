@@ -20,12 +20,11 @@ public class Adresse {
 
     @NonNull
     @Column(length = 15,nullable = false)
-    private String code_postal;
+    private String codePostal;
 
     @NonNull
     @Column(length = 100,nullable = false)
     private String ville;
 
-    @OneToOne(mappedBy = "adresse")
-    private Client client;
+
 }

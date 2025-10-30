@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ClientsRepository extends JpaRepository<Client, Integer> {
     List<Client> findByNomStartingWithIgnoreCase(String name);
-    Client getClientByNoClient(int noClient);
+    Client getClientByNoClient(Integer noClient);
 
 }
