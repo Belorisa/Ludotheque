@@ -18,7 +18,7 @@ public class Exemplaire {
     private Integer id;
 
     @NonNull
-    @Column(length = 100,nullable = false,unique = true)
+    @Column(length = 13,nullable = false,unique = true)
     private String codebarre;
 
     @NonNull

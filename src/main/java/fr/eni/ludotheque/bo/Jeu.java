@@ -52,7 +52,5 @@ public class Jeu {
     )
     private Set<Genre> genres = new HashSet<>(); ;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "jeu",orphanRemoval = true)
-    @NonNull
-    private Set<Exemplaire> exemplaires = new HashSet<>();
+
 }
