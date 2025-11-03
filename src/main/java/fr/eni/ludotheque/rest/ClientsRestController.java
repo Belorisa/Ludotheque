@@ -21,10 +21,9 @@ import java.util.List;
 public class ClientsRestController {
 
     private final JeuRepository jeuRepository;
-    @NonNull
+
     private ClientsService clientsService;
 
-    @NonNull
     private JeuxService jeuService;
 
 
@@ -34,50 +33,45 @@ public class ClientsRestController {
         //Client client = new Client("n1","s1","n1.s1@eni.fr",new Adresse("rue1","cp1","ville1"));
 
         Client client = clientsService.ajouterClient(clientDto);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(client);
     }
 
     @DeleteMapping("/clients/{id}")
     public ResponseEntity<Void> deleteClients(@PathVariable Integer id) {
         clientsService.supprimerClient(id);
-
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PutMapping("/clients/{id}")
     public ResponseEntity<Client> changeClients(@RequestBody ClientDto clientDto, @PathVariable Integer id) {
         Client client = clientsService.modificationClient(clientDto,id);
-
         return ResponseEntity.status(HttpStatus.OK).body(client);
     }
 
-    @PatchMapping("clients/{id}")
+    @PatchMapping("/clients/{id}")
     public ResponseEntity<Client> changeAdresse(@RequestBody Adresse adresse, @PathVariable Integer id) {
         clientsService.modificationAdresse(adresse, id);
-
         return ResponseEntity.status(HttpStatus.OK).build();
 
     }
 
 
-    @GetMapping("clients/{name}")
+    @GetMapping("/clients/{name}")
     public ResponseEntity<List<Client>> getClientByName(@PathVariable String name) {
         List<Client> clients = clientsService.findClientsByName(name);
-
         return ResponseEntity.status(HttpStatus.OK).body(clients);
     }
 
-    @GetMapping("clients/id/{id}")
+    @GetMapping("/clients/id/{id}")
     public ResponseEntity<Client> getClientById(@PathVariable Integer id) {
         Client client = clientsService.getClientById(id);
-
         return ResponseEntity.status(HttpStatus.OK).body(client);
     }
 
-    @GetMapping("jeux")
+    @GetMapping("/jeux")
     public ResponseEntity<List<GameAvailableDTO>> getAllJeux() {
         List<GameAvailableDTO> jeux = jeuRepository.findGamesWithAvailableCount();
+        return ResponseEntity.status(HttpStatus.OK).body(jeux);
     }
 
 }
