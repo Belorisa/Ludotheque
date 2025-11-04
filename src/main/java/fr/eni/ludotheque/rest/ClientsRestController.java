@@ -20,10 +20,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClientsRestController {
 
+    @NonNull
     private final JeuRepository jeuRepository;
 
+    @NonNull
     private ClientsService clientsService;
 
+    @NonNull
     private JeuxService jeuService;
 
 

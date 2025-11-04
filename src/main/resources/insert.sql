@@ -1,0 +1,1 @@
+insert into utilisateur (id,login,password,role) values (1,'bob','{bcrypt}$2y$10$b03.7LR6qVCOmH7C4KEzS.dNmMCVlh5GhWlx4sBhlEfvMA9o3A3pi','"USER"')
