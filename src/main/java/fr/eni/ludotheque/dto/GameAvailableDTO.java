@@ -9,6 +9,6 @@ import org.bson.types.ObjectId;
 @Getter
 public class GameAvailableDTO {
     private String titre;
-    private int exemplairesTotal;
-    private int exemplairesDisponibles;
+    private Integer exemplairesTotal;
+    private Integer exemplairesDisponibles;
 }

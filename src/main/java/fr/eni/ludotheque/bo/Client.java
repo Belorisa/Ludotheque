@@ -32,6 +32,6 @@ public class Client {
     @NonNull
     private Adresse adresse;
 
-    @Nullable
+
     private Set<Location>  locations;
 }

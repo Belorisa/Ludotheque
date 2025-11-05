@@ -16,8 +16,12 @@ public class JeuxServiceImpl implements JeuxService {
     @Autowired
     JeuRepositoryCustom jeuxRepositoryCustom;
 
+    @Autowired
+    JeuRepository jeuxRepository;
+
     @Override
     public List<GameAvailableDTO>  getJeux() {
-        return  jeuxRepositoryCustom.findAllByJeux() ;
+        //return  jeuxRepositoryCustom.findAllByJeux() ;
+        return jeuxRepository.findAllGameAvailable();
     }
 }
