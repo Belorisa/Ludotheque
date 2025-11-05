@@ -1,36 +1,36 @@
 package fr.eni.ludotheque.bo;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.annotation.Nullable;
 
-@Data
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Set;
+
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "CLIENTS")
+@Data
+@Document("client")
 public class Client {
-    @EqualsAndHashCode.Exclude
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer noClient;
+    private String noClient;
 
     @NonNull
-    @Column(length = 100,nullable = false)
     private String nom;
 
     @NonNull
-    @Column(length = 100,nullable = false)
     private String prenom;
 
     @NonNull
-    @Column(length = 100,nullable = false,unique = true)
     private String email;
 
-    @Column(length = 15)
-    String telephone;
-
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @NonNull
-    @JoinColumn(name = "no_adresse",nullable = false)
+    private String telephone;
+
+    @NonNull
     private Adresse adresse;
+
+    @Nullable
+    private Set<Location>  locations;
 }

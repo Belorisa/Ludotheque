@@ -1,18 +1,18 @@
 package fr.eni.ludotheque.bo;
 
-import jakarta.persistence.*;
-import lombok.*;
 
-@Data
+
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "Utilisateur")
+@Data
+@Document("utilisateur")
 public class Utilisateur {
 
-    @EqualsAndHashCode.Exclude
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @NonNull

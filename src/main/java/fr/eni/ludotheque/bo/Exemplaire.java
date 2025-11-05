@@ -1,33 +1,21 @@
 package fr.eni.ludotheque.bo;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 
-import java.time.LocalDate;
 
-@Data
-@RequiredArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "Exemplaire")
+@AllArgsConstructor
+@Data
 public class Exemplaire {
 
-    @EqualsAndHashCode.Exclude
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private String id;
 
     @NonNull
-    @Column(length = 13,nullable = false,unique = true)
     private String codebarre;
 
     @NonNull
-    @Basic(optional = false)
     private Boolean louable;
-
-    @ManyToOne
-    @NonNull
-    @JoinColumn(name = "jeux_id_jeux")
-    private Jeu jeu;
 
 }

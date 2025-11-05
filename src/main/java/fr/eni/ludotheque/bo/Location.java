@@ -2,17 +2,19 @@ package fr.eni.ludotheque.bo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.util.Date;
 
-@Data
+@NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class Location {
-    private Integer no_location;
+
     @NonNull private Date debut;
     @NonNull private Date fin;
-    @NonNull private double tarif_jour;
-    @NonNull private Client client;
+    @NonNull private Double tarif_jour;
+
     @NonNull private Facture facture;
 }

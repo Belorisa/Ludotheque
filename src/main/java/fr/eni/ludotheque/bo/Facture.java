@@ -2,14 +2,16 @@ package fr.eni.ludotheque.bo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.util.Date;
 
-@Data
+@NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class Facture {
-   private Integer id;
+
     @NonNull
     private Date date_paiement;
 

@@ -73,8 +73,7 @@ public class ClientsRestController {
 
     @GetMapping("/jeux")
     public ResponseEntity<List<GameAvailableDTO>> getAllJeux() {
-        List<GameAvailableDTO> jeux = jeuRepository.findGamesWithAvailableCount();
-        return ResponseEntity.status(HttpStatus.OK).body(jeux);
+        return null;
     }
 
 }
