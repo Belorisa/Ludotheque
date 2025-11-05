@@ -23,13 +23,10 @@ public class Jeu {
     @NonNull
     private String reference;
 
-    @Nullable
     private Integer age_min;
 
-    @Nullable
     private String Description;
 
-    @Nullable
     private Integer duree;
 
     @NonNull

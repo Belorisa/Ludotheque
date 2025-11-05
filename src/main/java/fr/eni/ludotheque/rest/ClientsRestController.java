@@ -10,6 +10,7 @@ import fr.eni.ludotheque.dto.ClientDto;
 import fr.eni.ludotheque.dto.GameAvailableDTO;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,21 +41,21 @@ public class ClientsRestController {
     }
 
     @DeleteMapping("/clients/{id}")
-    public ResponseEntity<Void> deleteClients(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteClients(@PathVariable ObjectId id) {
         clientsService.supprimerClient(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PutMapping("/clients/{id}")
-    public ResponseEntity<Client> changeClients(@RequestBody ClientDto clientDto, @PathVariable Integer id) {
+    public ResponseEntity<Client> changeClients(@RequestBody ClientDto clientDto, @PathVariable ObjectId id) {
         Client client = clientsService.modificationClient(clientDto,id);
         return ResponseEntity.status(HttpStatus.OK).body(client);
     }
 
     @PatchMapping("/clients/{id}")
-    public ResponseEntity<Client> changeAdresse(@RequestBody Adresse adresse, @PathVariable Integer id) {
-        clientsService.modificationAdresse(adresse, id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+    public ResponseEntity<Client> changeAdresse(@RequestBody Adresse adresse, @PathVariable ObjectId id) {
+        Client client = clientsService.modificationAdresse(adresse, id);
+        return ResponseEntity.status(HttpStatus.OK).body(client);
 
     }
 
@@ -66,14 +67,15 @@ public class ClientsRestController {
     }
 
     @GetMapping("/clients/id/{id}")
-    public ResponseEntity<Client> getClientById(@PathVariable Integer id) {
+    public ResponseEntity<Client> getClientById(@PathVariable ObjectId id) {
         Client client = clientsService.getClientById(id);
         return ResponseEntity.status(HttpStatus.OK).body(client);
     }
 
     @GetMapping("/jeux")
     public ResponseEntity<List<GameAvailableDTO>> getAllJeux() {
-        return null;
+        List<GameAvailableDTO> jeux = jeuService.getJeux();
+        return ResponseEntity.status(HttpStatus.OK).body(jeux);
     }
 
 }

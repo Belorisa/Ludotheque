@@ -3,17 +3,18 @@ package fr.eni.ludotheque.bo;
 
 
 import lombok.*;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Data
-@Document("utilisateur")
+@Document("Utilisateur")
 public class Utilisateur {
 
     @Id
-    private Integer id;
+    private ObjectId _id;
 
     @NonNull
     private String login;

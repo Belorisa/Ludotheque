@@ -9,8 +9,6 @@ import org.springframework.data.annotation.Id;
 @Data
 public class Exemplaire {
 
-    @Id
-    private String id;
 
     @NonNull
     private String codebarre;

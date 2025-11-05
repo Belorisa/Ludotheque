@@ -25,11 +25,11 @@ public class MyUserDetailServiceImpl implements UserDetailsService {
     private static final Logger log = LoggerFactory.getLogger(MyUserDetailServiceImpl.class);
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         log.debug("loadUserByUsername - start");
 
-        Utilisateur use = userRepository.findUtilisateurByLogin(username);
-        System.out.println(username);
+        Utilisateur use = userRepository.findUtilisateurByLogin(login);
+        System.out.println(login);
         UserDetails user = null;
         System.out.println(use);
         if (use != null) {
